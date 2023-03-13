@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'TiltPrism';
+  src: local('TiltPrism'), url('./assets/fonts/Tilt_Prism/TiltPrism-Regular.ttf') format('truetype');
+}

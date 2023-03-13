@@ -32,7 +32,39 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+* {
+  background-color: black;
+  color: white;
+}
+
+.nav-item a {
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 600;
+}
+
+
+
+.nav-item:hover,
+.nav-item:hover a:hover {
+
+  background-color: #1f1f1f;
+}
+
+.connect_wallet_btn {
+  background: #1f1f1f !important;
+}
+
+.connect_wallet_btn:hover {
+  background: #eb0c1c !important;
+}
+
+.hero-section {
+  font-family: TiltPrism;
 }
