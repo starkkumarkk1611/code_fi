@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import Routes from './navigation';
-import Navbar from './components/navbar';
+import { Web3AuthProvider } from './hooks/useWeb3Auth';
 function App() {
   return (
     <div className="App">
-      <Routes />
+      <Web3AuthProvider>
+        <Routes />
+      </Web3AuthProvider>
     </div>
   );
 }
