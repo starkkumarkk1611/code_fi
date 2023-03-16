@@ -42,8 +42,6 @@ body,
 html {
   background-color: black;
   color: white;
-  overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 * {
@@ -105,6 +103,6 @@ html {
 }
 
 .arena {
-  height: calc(100vh - 5.4rem) !important;
-
+  /* height: calc(100vh - 100px) !important; */
+  /* border: 2px solid red */
 }

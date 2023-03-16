@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Loader = () => {
+const PageLoader = () => {
      return (
           <div display={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                <div className="hero-section" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -18,4 +18,4 @@ const Loader = () => {
      )
 }
 
-export default Loader
+export default PageLoader

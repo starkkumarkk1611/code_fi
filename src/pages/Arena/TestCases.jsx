@@ -1,19 +1,26 @@
-import React from 'react'
+import React from 'react';
+import SpinLoader from '../../components/loader/SpinLoader';
 
 const TestCases = ({ setCurrentTestCase, currentTestCase, testCases }) => {
 
      return (
-          <div>
-               <h1>TestCases</h1>
-               <div>
-                    {
-                         testCases.map(({ processing }, index) => (
-                              <div style={index == currentTestCase ? { border: "2px solid green" } : { border: "2px solid red" }} onClick={() => setCurrentTestCase(index)} key={index}>{processing ? "Running" : "Done"} Test Case {index} </div>
-                         ))
-                    }
-               </div>
+          <div style={{ maxHeight: "400px", overflowY: "scroll" }} >
+               {
 
-          </div>
+                    testCases.map(({ processing }, index) => (
+                         <div style={index === currentTestCase ? { background: "#eb0c1c", display: "flex", alignItems: "center", justifyContent: "flex-start", padding: "1rem", border: "2px solid #1f1f1f", borderLeft: "0", borderTop: "0" } : {
+                              display: "flex", alignItems: "center", justifyContent: "flex-start", padding: "1rem", border: "2px solid #1f1f1f", borderLeft: "0", borderTop: "0"
+                         }}
+                              onClick={() => setCurrentTestCase(index)}
+                              key={index}>
+                              {processing ? <SpinLoader style={{ height: "20px", width: "20px" }} /> : "Done"}
+                              <div style={{ marginLeft: "1rem" }}> Test Case {index}</div>
+                         </div>
+                    ))
+               }
+
+
+          </div >
      )
 }
 

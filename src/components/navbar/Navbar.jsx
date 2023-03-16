@@ -10,7 +10,7 @@ const Navbar = () => {
      const { onLogin, onLogout, isLoggedIn, getPrefix, safeAuthSignInResponse } = useWeb3Auth();
      console.log(onLogin)
      return (
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "3rem", padding: "1rem", height: "5.4rem", }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "3rem", padding: "1rem", height: "10vh", }}>
                <div className='nav-item' >
                     <Link to="/">HOME</Link>
                </div>

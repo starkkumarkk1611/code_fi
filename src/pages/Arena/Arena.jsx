@@ -59,7 +59,48 @@ const Landing = () => {
           outputDetails: "",
           submissionsToken: "",
           processing: false,
-     }]);
+     },
+     {
+          id: 2,
+          input: "2\n5\n1 2 3 4 5\n5\n5 4 3 2 1",
+          expectedOutput: "1 2 3 4 5\n5 4 3 2 1",
+          outputDetails: "",
+          submissionsToken: "",
+          processing: false,
+     },
+     {
+          id: 2,
+          input: "2\n5\n1 2 3 4 5\n5\n5 4 3 2 1",
+          expectedOutput: "1 2 3 4 5\n5 4 3 2 1",
+          outputDetails: "",
+          submissionsToken: "",
+          processing: false,
+     },
+     {
+          id: 2,
+          input: "2\n5\n1 2 3 4 5\n5\n5 4 3 2 1",
+          expectedOutput: "1 2 3 4 5\n5 4 3 2 1",
+          outputDetails: "",
+          submissionsToken: "",
+          processing: false,
+     },
+     {
+          id: 2,
+          input: "2\n5\n1 2 3 4 5\n5\n5 4 3 2 1",
+          expectedOutput: "1 2 3 4 5\n5 4 3 2 1",
+          outputDetails: "",
+          submissionsToken: "",
+          processing: false,
+     },
+     {
+          id: 2,
+          input: "2\n5\n1 2 3 4 5\n5\n5 4 3 2 1",
+          expectedOutput: "1 2 3 4 5\n5 4 3 2 1",
+          outputDetails: "",
+          submissionsToken: "",
+          processing: false,
+     },
+     ]);
 
      // from backend data end
      const [currentTestCase, setCurrentTestCase] = useState(0);
@@ -79,7 +120,7 @@ const Landing = () => {
           if (enterPress && ctrlPress) {
                console.log("enterPress", enterPress);
                console.log("ctrlPress", ctrlPress);
-               if (customInputActive) handleCompileForCustomInput();
+               handleCompileForCustomInput();
           }
      }, [ctrlPress, enterPress]);
 
@@ -133,6 +174,7 @@ const Landing = () => {
                     } catch (err) {
                          console.log("err", err);
                          setProcessing(false);
+
                          showErrorToast();
                     }
                }
@@ -188,17 +230,26 @@ const Landing = () => {
                },
                data: formData
           };
-          let res = await axios.request(options);
-          console.log(res.data);
-          setTestCases(prev => {
-               let temp = [...prev];
-               res.data.forEach(({ token }, index) => {
-                    temp[index].submissionsToken = token;
-               })
-               return temp;
-          });
-          console.log("Hello yaar")
-          setRunTestCases(true);
+          try {
+
+
+               let res = await axios.request(options);
+               console.log(res.data);
+               setTestCases(prev => {
+                    let temp = [...prev];
+                    res.data.forEach(({ token }, index) => {
+                         temp[index].submissionsToken = token;
+                    })
+                    return temp;
+               });
+               console.log("Hello yaar")
+               setRunTestCases(true);
+          }
+          catch (err) {
+               let error = err.response ? err.response.data : err;
+               setProcessing(false);
+               console.log(error);
+          }
      }
      //  for checking all test cases status passed Or not;
      useEffect(() => {
@@ -340,7 +391,7 @@ const Landing = () => {
                <div style={{ flex: 2, borderRight: "2px solid #1f1f1f" }}>
                     Question Panel
                </div>
-               <div style={{ flex: 3, height: "100%", overflowX: "hidden", overflowY: "scroll" }} >
+               <div style={{ flex: 3, height: "90vh", overflowY: "scroll" }} >
                     <ToastContainer
                          position="top-right"
                          autoClose={2000}
@@ -371,7 +422,7 @@ const Landing = () => {
                          <div style={{}}>
                               <div style={{ marginTop: "0.5rem", display: "flex", justifyContent: "space-between" }}>
                                    <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "column", width: "50%" }}>
-                                        <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", alignItems: "center", marginLeft: "1rem" }}>
+                                        <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "center", marginLeft: "1rem" }}>
                                              <input type="checkbox" id="customInput" name="customInput" onChange={handleCustomInput} style={{ margin: "1rem 0", marginRight: "0.5rem" }} />
                                              <label htmlFor="customInput">Run against custom inputs</label>
                                         </div>
@@ -394,19 +445,19 @@ const Landing = () => {
                                    {customInputActive && outputDetails &&
                                         <div>
                                              <OutputDetails outputDetails={outputDetails} />
-                                             <OutputWindow outputDetails={outputDetails} />
+                                             <OutputWindow outputDetails={outputDetails} testCase={testCases[currentTestCase]} />
                                         </div>
                                    }
                               </div>
                               {
                                    !customInputActive && testCases[0].submissionsToken &&
-                                   <div style={{ border: "2px solid red", display: "flex", }}>
-                                        <div style={{ flex: 2, borderRight: "2px solid #1f1f1f" }}>
+                                   <div style={{ display: "flex", height: "fit-content" }}>
+                                        <div style={{ flex: 2, height: "fit-content" }}>
                                              <TestCases currentTestCase={currentTestCase} setCurrentTestCase={setCurrentTestCase} testCases={testCases} />
                                         </div>
                                         <div style={{ flex: 3 }}>
                                              {testCases[currentTestCase].outputDetails && <OutputDetails outputDetails={testCases[currentTestCase].outputDetails} />}
-                                             {testCases[currentTestCase].outputDetails && <OutputWindow outputDetails={testCases[currentTestCase].outputDetails} />}
+                                             {testCases[currentTestCase].outputDetails && <OutputWindow outputDetails={testCases[currentTestCase].outputDetails} testCase={testCases[currentTestCase]} />}
                                         </div>
                                    </div>
                               }

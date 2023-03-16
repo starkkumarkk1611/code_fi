@@ -1,2 +1,2 @@
-import Loader from "./Loader";
-export default Loader;
+import PageLoader from "./PageLoader";
+export default PageLoader;
