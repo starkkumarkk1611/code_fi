@@ -1,7 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import Routes from './navigation';
-import { Web3AuthProvider } from './hooks/useWeb3Auth';
+import logo from "./logo.svg";
+import "./App.css";
+import Routes from "./navigation";
+import { Web3AuthProvider } from "./hooks/useWeb3Auth";
+import { useContext, useEffect } from "react";
 function App() {
   return (
     <div className="App">
