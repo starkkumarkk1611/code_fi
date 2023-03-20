@@ -10,6 +10,7 @@ import Home from "../pages/home";
 import Navbar from "../components/navbar";
 import Arena from "../pages/Arena";
 import Registration from "../pages/registration";
+import Profile from "../pages/profile";
 
 const Navigation = () => {
   return (
@@ -19,6 +20,7 @@ const Navigation = () => {
         <Route path="/" element={<Home />} />
         <Route path="arena" element={<Arena />} />
         <Route path="register" element={<Registration />} />
+        <Route path="profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );

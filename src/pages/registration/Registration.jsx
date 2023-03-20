@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useWeb3Auth } from "../../hooks/useWeb3Auth";
 import user from "../../schemas/user";
+import redp from "../../img/redp.png";
 const Registration = () => {
   const [pub, setPub] = useState(null);
-  const { onLogin, onLogout, isLoggedIn, getPrefix, safeAuthSignInResponse } =
-    useWeb3Auth();
+  const {
+    onLogin,
+    onLogout,
+    isLoggedIn,
+    getPrefix,
+    safeAuthSignInResponse,
+    safeAuth,
+  } = useWeb3Auth();
   const error = new Error("Did not match");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +30,7 @@ const Registration = () => {
     setPub(dict);
   };
   useEffect(() => {
+    console.log(isLoggedIn);
     if (isLoggedIn) {
       try {
         console.log(safeAuthSignInResponse.eoa);
@@ -59,6 +67,7 @@ const Registration = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <h2>Sign Up</h2>
@@ -76,7 +85,7 @@ const Registration = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "start",
           }}
           onSubmit={handleSubmit}
         >
@@ -92,7 +101,8 @@ const Registration = () => {
             type="text"
             placeholder="Username"
           />
-          <input
+
+          {/* <input
             style={{
               marginBottom: "10px",
               width: "350px",
@@ -115,7 +125,7 @@ const Registration = () => {
             }}
             type="text"
             placeholder="Confirm password"
-          />
+          /> */}
           <input
             style={{
               marginBottom: "10px",
@@ -128,6 +138,24 @@ const Registration = () => {
             type="text"
             placeholder="Email-id"
           />
+          <input required style={{ display: "none" }} type="file" id="file" />
+          <label
+            htmlFor="file"
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <img
+              src={redp}
+              style={{
+                width: "30px",
+                height: "30px",
+                marginTop: "5px",
+                marginRight: "10px",
+                cursor: "pointer",
+              }}
+              alt=""
+            />
+            <span>Add an avatar</span>
+          </label>
           <button
             className="btn"
             style={{
@@ -138,6 +166,7 @@ const Registration = () => {
               borderRadius: "8px",
               width: "100px",
               height: "50px",
+              marginLeft: "120px",
               cursor: "pointer",
             }}
           >

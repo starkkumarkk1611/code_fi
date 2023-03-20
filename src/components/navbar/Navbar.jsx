@@ -12,13 +12,6 @@ const Navbar = () => {
     if (isLoggedIn) {
       try {
         console.log(safeAuthSignInResponse.eoa);
-        user().then((db) => {
-          db.collection("userdata")
-            .create([safeAuthSignInResponse.eoa])
-            .then((res) => {
-              console.log(res);
-            });
-        });
       } catch (error) {
         console.log(error);
       }
@@ -98,7 +91,7 @@ const Navbar = () => {
       </div>
       <div className="nav-item">
         {" "}
-        <Link>CONTACT US</Link>
+        <Link to="/profile">PROFILE</Link>
       </div>
       {safeAuthSignInResponse?.eoa && (
         <div>
